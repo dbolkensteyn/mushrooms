@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
   for mushroom in mushrooms:
     (x, y, r) = mushroom
-    print mushroom + " " + cal.transform(x, y)
+    print str(mushroom) + " " + str(cal.transform(x, y))
     cv2.circle(im, (x, y), r, (0, 255, 0), 2)
     cv2.circle(im, (x, y), 2, (0, 0, 255), 3)
 
