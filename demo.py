@@ -1,7 +1,7 @@
 import cv2
 
-from picamera.array import PiRGBArray
-from picamera import PiCamera
+#from picamera.array import PiRGBArray
+#from picamera import PiCamera
 from detector import Detector
 
 def capture_frames(camera):
@@ -14,15 +14,13 @@ if __name__ == '__main__':
   #camera.capture(rawCapture, format="bgr")
   #im = rawCapture.array
   im = cv2.imread('photos/b1.jpg')
+  im = cv2.resize(im, (640, 480))
 
   detector = Detector()
   mushrooms = detector.detect(im) 
 
-  mushroom = mushrooms.pop()
-  cv2.circle(im, (x, y), r, (0, 255, 0), 2)
-  cv2.circle(im, (x, y), 2, (0, 0, 255), 3)
-  for other in mushrooms:
-    (x, y, r) = circle
+  for mushroom in mushrooms:
+    (x, y, r) = mushroom
     cv2.circle(im, (x, y), r, (0, 255, 0), 2)
     cv2.circle(im, (x, y), 2, (0, 0, 255), 3)
 
