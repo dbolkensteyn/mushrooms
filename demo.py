@@ -1,7 +1,7 @@
 import cv2
 
 from camera import Camera
-from detect import Detector
+from detector import Detector
 
 def on_capture(im):
   detector = Detector()
