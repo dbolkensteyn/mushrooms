@@ -1,7 +1,7 @@
 import cv2
 
-#from picamera.array import PiRGBArray
-#from picamera import PiCamera
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 from detector import Detector
 
 def capture_frames(camera):
