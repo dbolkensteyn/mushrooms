@@ -25,7 +25,7 @@ class Detector:
 
     circles = cv2.HoughCircles(gray_im, cv2.cv.CV_HOUGH_GRADIENT, 1, minDist=10, param1=50, param2=13, minRadius=7, maxRadius=18)
     result = []
-    if circles != None:
+    if circles is not None:
       circles = np.uint16(np.around(circles))
       for i in circles[0,:]:
           x, y, r = i
