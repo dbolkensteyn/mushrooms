@@ -16,8 +16,8 @@ class Detector:
 
   def detect(self, im):
     gray_im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    #ret = cv2.threshold(im, 130, 255, cv2.THRESH_BINARY)
-    #gray_im = ret[1]
+    ret = cv2.threshold(im, 130, 255, cv2.THRESH_BINARY)
+    gray_im = ret[1]
     #gray_im = cv2.erode(gray_im, (3, 3))
     gray_im = self.auto_canny(gray_im)
 
