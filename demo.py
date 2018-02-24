@@ -9,12 +9,11 @@ def capture_frames(camera):
   on_capture(camera.image())
 
 if __name__ == '__main__':
-  camera = PiCamera()
+  camera = PiCamera(resolution=(640, 480))
   rawCapture = PiRGBArray(camera)
 
   camera.capture(rawCapture, format="bgr")
   im = rawCapture.array
-
 
   cv2.imshow("demo", im)
   cv2.waitKey()
