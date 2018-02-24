@@ -1,4 +1,11 @@
 // run with: node calibration.js
+
+/*
+    0,   0: 560, 150
+    0, 200: 556, 365
+  300,   0: 254, 148
+*/
+
 nudged = require('nudged')
 
 var domain = [[0, 0], [300, 0], [0, 300], [200, 100]]
