@@ -15,3 +15,6 @@ Desktop.ini
 
 # Python
 *.pyc
+
+# Node
+node_modules
