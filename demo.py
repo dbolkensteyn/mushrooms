@@ -1,9 +1,20 @@
 import cv2
 
-from camera import Camera
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 from detector import Detector
 
-def on_capture(im):
+def capture_frames(camera):
+  yield camera.stream()
+  on_capture(camera.image())
+
+if __name__ == '__main__':
+  camera = PiCamera()
+  rawCapture = PiRGBArray(camera)
+
+  camera.capture(rawCapture, format="bgr")
+  im = rawCapture.array
+
   detector = Detector()
   mushrooms = detector.detect(im)
 
@@ -17,11 +28,3 @@ def on_capture(im):
 
   cv2.imshow("demo", im)
   cv2.waitKey()
-
-def capture_frames(camera):
-  yield camera.stream()
-  on_capture(camera.image())
-
-if __name__ == '__main__':
-  camera = Camera(20)
-  camera.capture_sequence(capture_frames(camera))
