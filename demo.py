@@ -9,12 +9,12 @@ def capture_frames(camera):
   on_capture(camera.image())
 
 if __name__ == '__main__':
-  #camera = PiCamera(resolution=(640, 480))
-  #rawCapture = PiRGBArray(camera)
-  #camera.capture(rawCapture, format="bgr")
-  #im = rawCapture.array
-  im = cv2.imread('photos/b1.jpg')
-  im = cv2.resize(im, (640, 480))
+  camera = PiCamera(resolution=(640, 480))
+  rawCapture = PiRGBArray(camera)
+  camera.capture(rawCapture, format="bgr")
+  im = rawCapture.array
+  #im = cv2.imread('photos/b1.jpg')
+  #im = cv2.resize(im, (640, 480))
 
   detector = Detector()
   mushrooms = detector.detect(im) 
