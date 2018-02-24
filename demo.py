@@ -15,5 +15,16 @@ if __name__ == '__main__':
   camera.capture(rawCapture, format="bgr")
   im = rawCapture.array
 
+  detector = Detector()
+  mushrooms = detector.detect(im)
+
+  mushroom = mushrooms.pop()
+  cv2.circle(im, (x, y), r, (0, 255, 0), 2)
+  cv2.circle(im, (x, y), 2, (0, 0, 255), 3)
+  for other in mushrooms:
+    (x, y, r) = circle
+    cv2.circle(im, (x, y), r, (0, 255, 0), 2)
+    cv2.circle(im, (x, y), 2, (0, 0, 255), 3)
+
   cv2.imshow("demo", im)
   cv2.waitKey()
