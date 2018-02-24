@@ -1,17 +1,27 @@
 import cv2
+
+from camera import Camera
 from detect import Detector
 
-if __name__ == '__main__':
-  im = cv2.imread("photos/b1.jpg")
-  im = cv2.resize(im, (640, 480))
-
+def on_capture(im):
   detector = Detector()
-  circles = detector.detect(im)
+  mushrooms = detector.detect(im)
 
-  for circle in circles:
+  mushroom = mushrooms.pop()
+  cv2.circle(im, (x, y), r, (0, 255, 0), 2)
+  cv2.circle(im, (x, y), 2, (0, 0, 255), 3)
+  for other in mushrooms:
     (x, y, r) = circle
-    cv2.circle(im, (x, y), r, (0,255,0), 2)
-    cv2.circle(im, (x, y), 2, (0,0,255), 3)
+    cv2.circle(im, (x, y), r, (0, 255, 0), 2)
+    cv2.circle(im, (x, y), 2, (0, 0, 255), 3)
 
   cv2.imshow("demo", im)
   cv2.waitKey()
+
+def capture_frame(camera, controller):
+  yield camera.stream()
+  on_capture(camera.image())
+
+if __name__ == '__main__':
+  camera = Camera(20)
+  camera.capture_sequence(capture_frames(camera))
