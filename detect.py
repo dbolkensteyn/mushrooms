@@ -20,14 +20,17 @@ _, gray_im = cv2.threshold(im, 130, 255, cv2.THRESH_BINARY)
 gray_im = cv2.erode(gray_im, (3, 3))
 gray_im = auto_canny(gray_im)
 
+roi = (82, 128, 495, 400)
+
 circles = cv2.HoughCircles(gray_im, cv2.cv.CV_HOUGH_GRADIENT, 1, minDist=10, param1=50, param2=13, minRadius=7, maxRadius=18)
 if circles != None:
   circles = np.uint16(np.around(circles))
   for i in circles[0,:]:
-      # draw the outer circle
-      cv2.circle(im, (i[0],i[1]), i[2], (0,255,0), 2)
-      # draw the center of the circle
-      cv2.circle(im, (i[0],i[1]), 2, (0,0,255), 3)
+      x, y, r = i
+
+      if x >= roi[0] and x <= roi[2] and y >= roi[1] and y <= roi[3]:
+        cv2.circle(im, (x, y), r, (0,255,0), 2)
+        cv2.circle(im, (x, y), 2, (0,0,255), 3)
 
 cv2.imshow("demo", im)
 cv2.waitKey()
