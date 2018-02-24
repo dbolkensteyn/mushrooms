@@ -24,8 +24,5 @@ class Calibration:
 
     yn = int(my*y + by)
 
-    if xn < 0 or yn < 0 or xn > 300 or yn > 200:
-      raise ValueError()
-
     return [xn, yn]
 
