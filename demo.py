@@ -18,7 +18,7 @@ def on_capture(im):
   cv2.imshow("demo", im)
   cv2.waitKey()
 
-def capture_frame(camera, controller):
+def capture_frames(camera):
   yield camera.stream()
   on_capture(camera.image())
 
