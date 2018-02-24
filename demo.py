@@ -3,6 +3,7 @@ import cv2
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 from detector import Detector
+from calibration import Calibration
 
 def capture_frames(camera):
   yield camera.stream()
