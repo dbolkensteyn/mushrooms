@@ -4,20 +4,20 @@
 
 class Calibration:
   def transform(self, x, y):
-    x1 = 558.
-    y1 = 0.
-    x2 = 254.
-    y2 = 300.
+    x1 = 218.
+    y1 = 365.
+    x2 = 346.
+    y2 = 194.
 
     mx = (y2 - y1) / (x2 - x1)
     bx = y1 - mx * x1
 
     xn = int(mx*x + bx)
 
-    x1 = 149.
-    y1 = 0.
-    x2 = 365.
-    y2 = 200.
+    x1 = 156.
+    y1 = -26.
+    x2 = 292.
+    y2 = 147.
 
     my = (y2 - y1) / (x2 - x1)
     by = y1 - my * x1
